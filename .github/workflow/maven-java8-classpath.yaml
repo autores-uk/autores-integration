@@ -1,0 +1,19 @@
+name: Maven Java 8 Classpath
+on: [ push ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['8']
+        jdk: ['temurin']
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.version }}
+          distribution: ${{ matrix.jdk }}
+          cache: 'maven'
+      - name: Package with Maven
+        run: mvn --file maven/java8/classpath/pom.xml --batch-mode --update-snapshots package
