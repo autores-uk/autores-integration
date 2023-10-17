@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ['8']
-        jdk: ['temurin']
+        version: ['8', '11', '17', '21']
+        jdk: ['temurin'] # TODO: j9
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
