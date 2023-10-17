@@ -15,5 +15,5 @@ jobs:
           java-version: ${{ matrix.version }}
           distribution: ${{ matrix.jdk }}
           cache: 'maven'
-      - name: Package with Maven
+      - name: Test
         run: mvn --file maven/java8/classpath/pom.xml --batch-mode --update-snapshots clean test
