@@ -16,4 +16,4 @@ jobs:
           distribution: ${{ matrix.jdk }}
           cache: 'maven'
       - name: Package with Maven
-        run: mvn --file maven/java8/classpath/pom.xml --batch-mode --update-snapshots package
+        run: mvn --file maven/java8/classpath/pom.xml --batch-mode --update-snapshots clean package
