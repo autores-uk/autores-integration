@@ -1,11 +1,11 @@
-name: Maven/Java 8 AutoRes/Classpath
+name: Maven/Java 8 AutoRes/Module
 on: [ push ]
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ['8', '11', '17', '21']
+        version: ['11', '17', '21']
         jdk: ['temurin', 'semeru']
     steps:
       - uses: actions/checkout@v3
