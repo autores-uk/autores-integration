@@ -1,8 +1,12 @@
 name: Maven/Java 8 AutoRes/Classpath
-on: [ push ]
-env:
-  AUTORES8VER: '8.0.9-alpha'
-  AUTORES11VER: ''
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      AUTORES8VER:
+        default: '8.0.9-alpha'
+
 jobs:
   maven-java8-classpath:
     runs-on: ubuntu-latest
@@ -10,7 +14,7 @@ jobs:
       matrix:
         version: ['8']
         jdk: ['temurin'] # 'semeru' 21 not available yet
-        lib: ['$AUTORES8VER']
+        lib: ["${{ inputs.AUTORES8VER }}"]
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
@@ -20,7 +24,7 @@ jobs:
           distribution: ${{ matrix.jdk }}
           cache: 'maven'
       - name: Test AutoRes $AUTORESVER
-        run: mvn -DAUTORESVER=$AUTORESVER --file maven/java8/classpath/pom.xml --batch-mode clean test
+        run: mvn -DAUTORESVER=${{ matrix.lib }} --file maven/java8/classpath/pom.xml --batch-mode clean test
   # maven-classpath:
   #   runs-on: ubuntu-latest
   #   strategy:
