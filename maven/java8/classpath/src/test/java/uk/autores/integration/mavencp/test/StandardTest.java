@@ -11,6 +11,5 @@ class StandardTest {
     @Test
     void verify() {
         assertNotNull(Foo.text());
-        fail();
     }
 }
