@@ -19,16 +19,20 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        jdk: ['temurin', 'semeru'] # 'semeru' 21 not available yet
+        jdk: ['temurin', 'semeru']
         version: ['11', '17']
         lib: ['8.0.9-alpha', '11.0.7-alpha']
         project: ['classpath']
         include:
-          - jdk: temurin
+          - jdk: 'temurin'
             version: '21'
-          - lib: '8.0.9-alpha'
+            lib: '11.0.7-alpha'
             project: 'classpath'
+          - jdk: 'temurin'
             version: '8'
+            lib: '8.0.9-alpha'
+            project: 'classpath'
+            
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
