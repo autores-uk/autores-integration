@@ -1,4 +1,4 @@
-name: Maven/Java 8 AutoRes/Classpath
+name: Tests
 
 on: [push]
 
