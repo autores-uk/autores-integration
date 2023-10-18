@@ -5,16 +5,30 @@ on:
   workflow_dispatch:
     inputs:
       AUTORES8VER:
+        description: Java 8 version
         default: '8.0.9-alpha'
+        required: true
+      AUTORES11VER:
+        description: Java 11 version
+        default: '8.0.9-alpha'
+        required: true
 
 jobs:
   maven-java8-classpath:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: true
       matrix:
-        version: ['8']
-        jdk: ['temurin'] # 'semeru' 21 not available yet
-        lib: ["${{ inputs.AUTORES8VER }}"]
+        jdk: ['temurin', 'semeru'] # 'semeru' 21 not available yet
+        version: ['11', '17']
+        lib: ['8.0.9-alpha', '11.0.7-alpha']
+        project: ['classpath']
+        include:
+          - jdk: temurin
+            version: '21'
+          - lib: '8.0.9-alpha'
+            project: 'classpath'
+            version: '8'
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
@@ -24,7 +38,7 @@ jobs:
           distribution: ${{ matrix.jdk }}
           cache: 'maven'
       - name: Test AutoRes ${{ matrix.lib }}
-        run: mvn -DAUTORESVER=${{ matrix.lib }} --file maven/classpath/pom.xml --batch-mode clean test
+        run: mvn -DAUTORESVER=${{ matrix.lib }} --file maven/${{ matrix.project }}/pom.xml --batch-mode clean test
   # maven-classpath:
   #   runs-on: ubuntu-latest
   #   strategy:
