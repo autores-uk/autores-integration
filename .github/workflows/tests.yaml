@@ -3,7 +3,7 @@ name: Maven/Java 8 AutoRes/Classpath
 on: [push]
 
 jobs:
-  maven-java8-classpath:
+  maven:
     runs-on: ubuntu-latest
     strategy:
       matrix:
