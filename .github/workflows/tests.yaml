@@ -23,7 +23,7 @@ jobs:
           java-version: ${{ matrix.version }}
           distribution: ${{ matrix.jdk }}
           cache: 'maven'
-      - name: Test AutoRes $AUTORESVER
+      - name: Test AutoRes ${{ matrix.lib }}
         run: mvn -DAUTORESVER=${{ matrix.lib }} --file maven/java8/classpath/pom.xml --batch-mode clean test
   # maven-classpath:
   #   runs-on: ubuntu-latest
