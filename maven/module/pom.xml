@@ -14,13 +14,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <AUTORESVER>8.0.9-alpha</AUTORESVER>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>uk.autores</groupId>
             <artifactId>annotations</artifactId>
-            <version>8.0.9-alpha</version>
+            <version>${AUTORESVER}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -41,7 +42,7 @@
                         <path>
                             <groupId>uk.autores</groupId>
                             <artifactId>annotations</artifactId>
-                            <version>8.0.9-alpha</version>
+                            <version>${AUTORESVER}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
