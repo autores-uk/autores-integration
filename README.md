@@ -2,4 +2,4 @@
 
 A suite of tests that utilize published assets.
 
-[Tests](https://github.com/autores-uk/autores-integration/actions/workflows/tests.yaml/badge.svg)
+[![Tests](https://github.com/autores-uk/autores-integration/actions/workflows/tests.yaml/badge.svg)](https://github.com/autores-uk/autores-integration/actions/workflows/tests.yaml)
