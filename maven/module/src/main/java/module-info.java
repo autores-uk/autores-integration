@@ -1,4 +1,5 @@
 module maven.java8.module {
-    requires uk.autores;
+    requires static uk.autores;
+    requires static java.compiler;
     exports uk.autores.integration.mavencp;
 }
