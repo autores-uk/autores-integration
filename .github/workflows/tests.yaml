@@ -17,16 +17,16 @@ jobs:
   maven-java8-classpath:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
+      #fail-fast: true
       matrix:
         jdk: ['temurin', 'semeru']
         version: ['11', '17']
-        lib: ['8.0.9-alpha', '11.0.7-alpha']
+        lib: ['8.0.9-alpha', '11.0.8-alpha']
         project: ['classpath']
         include:
           - jdk: 'temurin'
             version: '21'
-            lib: '11.0.7-alpha'
+            lib: '11.0.8-alpha'
             project: 'classpath'
           - jdk: 'temurin'
             version: '8'
