@@ -3,37 +3,15 @@ name: Tests
 on: [push]
 
 jobs:
-  maven:
+  docker:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        jdk: ['temurin', 'semeru']
-        version: ['11', '17']
-        lib: ['8.0.9-alpha', '11.0.8-alpha']
-        project: ['classpath', 'module']
-        include:
-          - jdk: 'temurin'
-            version: '21'
-            lib: '11.0.8-alpha'
-            project: 'classpath'
-          - jdk: 'temurin'
-            version: '8'
-            lib: '8.0.9-alpha'
-            project: 'classpath'
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push
+        uses: docker/build-push-action@v5
         with:
-          java-version: ${{ matrix.version }}
-          distribution: ${{ matrix.jdk }}
-          cache: 'maven'
-      - name: Test AutoRes ${{ matrix.lib }}
-        run: >
-          mvn
-          -Dmaven.compiler.target=${{ matrix.version }}
-          -DAUTORESVER=${{ matrix.lib }}
-          --file maven/${{ matrix.project }}/pom.xml
-          --batch-mode
-          clean test
+          push: false
+          tags: tester:latest
