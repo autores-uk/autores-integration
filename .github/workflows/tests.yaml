@@ -15,6 +15,6 @@ jobs:
         with:
           push: false
           tags: tester:latest
-          context: gradle/classpath/
+          context: "{{defaultContext}}/gradle/classpath/"
           build-args: |
             AUTORESVER=8.0.9-alpha
