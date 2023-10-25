@@ -22,4 +22,4 @@ jobs:
           tags: tester:latest
           context: gradle/classpath/
           build-args: |
-            AUTORESVER=$AUTORESVER8
+            AUTORESVER={{ env.AUTORESVER8 }}
