@@ -4,9 +4,10 @@ on: [push]
 
 env:
   AUTORESVER8: 8.0.9-alpha
+  AUTORESVER11: 11.0.8-alpha
 
 jobs:
-  docker:
+  gradle:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -14,8 +15,8 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Check out code
-        uses: actions/checkout@v2
-      - name: Build
+        uses: actions/checkout@v3
+      - name: Gradle Java 8 Classpath
         uses: docker/build-push-action@v5
         with:
           push: false
@@ -23,5 +24,15 @@ jobs:
           context: gradle/classpath/
           build-args: |
             AUTORESVER=${{ env.AUTORESVER8 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Gradle Java 11 Module
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: tester:latest
+          context: gradle/module/
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
