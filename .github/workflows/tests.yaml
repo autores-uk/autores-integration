@@ -4,7 +4,7 @@ on: [push]
 
 env:
   AUTORESVER8: 8.0.14-alpha-SNAPSHOT
-  AUTORESVER11: 11.0.8-alpha
+  AUTORESVER11: 11.0.8-alpha-SNAPSHOT
 
 jobs:
   maven:
