@@ -37,6 +37,39 @@ jobs:
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Maven Java 17
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: maven-jdk17:latest
+          context: maven/
+          file: maven/Dockerfile.jdk17
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Maven Java 21
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: maven-jdk21:latest
+          context: maven/
+          file: maven/Dockerfile.jdk21
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Maven Java 11 with Java 8 lib
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: maven-jdk11:latest
+          context: maven/
+          file: maven/Dockerfile.jdk11
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER8 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
   gradle:
     runs-on: ubuntu-latest
     steps:
