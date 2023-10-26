@@ -7,6 +7,36 @@ env:
   AUTORESVER11: 11.0.8-alpha
 
 jobs:
+  maven:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Maven Java 8 Classpath
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: maven-jdk8-cp:latest
+          context: maven/classpath/
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER8 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Maven Java 11
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: maven-jdk11:latest
+          context: maven/
+          file: maven/Dockerfile.jdk11
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
   gradle:
     runs-on: ubuntu-latest
     steps:
@@ -20,7 +50,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: false
-          tags: tester:latest
+          tags: gradle-jdk8-cp:latest
           context: gradle/classpath/
           build-args: |
             AUTORESVER=${{ env.AUTORESVER8 }}
@@ -30,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: false
-          tags: tester:latest
+          tags: gradle-jdk11-module:latest
           context: gradle/module/
           build-args: |
             AUTORESVER=${{ env.AUTORESVER11 }}
