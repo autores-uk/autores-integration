@@ -3,7 +3,7 @@ name: Tests
 on: [push]
 
 env:
-  AUTORESVER8: 8.0.9-alpha
+  AUTORESVER8: 8.0.14-alpha-SNAPSHOT
   AUTORESVER11: 11.0.8-alpha
 
 jobs:
