@@ -2,6 +2,9 @@ plugins {
     id("java")
 }
 
+group = "uk.autores.integrate.module"
+version = "1.0-SNAPSHOT"
+
 repositories {
     mavenCentral()
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }

@@ -70,6 +70,16 @@ jobs:
             AUTORESVER=${{ env.AUTORESVER8 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Maven Java 17 GraalVM native application
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: graal:latest
+          context: maven/native/
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
   gradle:
     runs-on: ubuntu-latest
     steps:
