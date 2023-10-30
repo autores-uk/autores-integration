@@ -5,10 +5,7 @@ import uk.autores.GenerateStringsFromText;
 import uk.autores.ResourceFiles;
 import uk.autores.cfg.Strategy;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -38,7 +35,8 @@ class StringsTest {
 
     private void verify(String resource, String s) throws IOException {
         try (InputStream in = StringsTest.class.getResourceAsStream(resource);
-            Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8)) {
+             InputStream buf = new BufferedInputStream(in);
+            Reader reader = new InputStreamReader(buf, StandardCharsets.UTF_8)) {
             for (int i = 0; i < s.length(); i++) {
                 int expected = reader.read();
                 assertFalse(expected < 0);

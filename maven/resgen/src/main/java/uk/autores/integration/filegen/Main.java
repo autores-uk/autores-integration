@@ -1,8 +1,6 @@
 package uk.autores.integration.filegen;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.*;
 import java.util.stream.IntStream;
 
@@ -17,6 +15,8 @@ public class Main {
         // bytes
         generateOneByteUtf8Texts("BinaryInline");
         generateOneByteUtf8Texts("BinaryEncoded");
+        generateAll16bitSequences(resdir.resolve("BinaryInlineAll16BitSequences.bin"));
+        generateAll16bitSequences(resdir.resolve("BinaryEncodedAll16BitSequences.bin"));
     }
 
     private static void generateOneByteUtf8Texts(String strategy) throws IOException {
@@ -42,19 +42,22 @@ public class Main {
     private static void generateAllCodePoints(Path path) throws IOException {
         // https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt
         try (Writer writer = Files.newBufferedWriter(path)) {
-            IntStream.rangeClosed(Character.MIN_CODE_POINT, Character.MAX_CODE_POINT)
-                    .filter(Character::isDefined)
-                    .filter(n -> n < Character.MIN_SURROGATE || n > Character.MAX_SURROGATE)
-                    .mapToObj(Character::toChars)
-                    .forEach(arr -> write(writer, arr));
+            for (int cp = Character.MIN_CODE_POINT; cp <= Character.MAX_CODE_POINT; cp++) {
+                if (!Character.isDefined(cp) || (cp >= Character.MIN_SURROGATE && cp <= Character.MAX_SURROGATE)) {
+                    continue;
+                }
+                writer.write(Character.toChars(cp));
+            }
         }
     }
 
-    private static void write(Writer writer, char[] arr) {
-        try {
-            writer.write(arr);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
+    private static void generateAll16bitSequences(Path path) throws IOException {
+        try (OutputStream out = Files.newOutputStream(path);
+             DataOutputStream dos = new DataOutputStream(out)) {
+            for (int i = 0; i <= 0xFFFF; i++) {
+                short s = (short) i;
+                dos.writeShort(s);
+            }
         }
     }
 
