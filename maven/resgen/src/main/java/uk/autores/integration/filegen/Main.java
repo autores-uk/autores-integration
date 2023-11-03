@@ -17,7 +17,7 @@ public class Main {
         generateOneByteUtf8Texts("BinaryEncoded");
         generateAll16bitSequences(resdir.resolve("BinaryInlineAll16BitSequences.bin"));
         generateAll16bitSequences(resdir.resolve("BinaryEncodedAll16BitSequences.bin"));
-        int megs = 1024 * 1024 * 5;
+        int megs = 1024 * 1024 * 2;
         generateOneByteUtf8Text(resdir.resolve("BinaryInlineMegabytes.bin"), megs);
         generateOneByteUtf8Text(resdir.resolve("BinaryEncodedMegabytes.bin"), megs);
         generateOneByteUtf8Text(resdir.resolve("BinaryLazyMegabytes.bin"), megs);
