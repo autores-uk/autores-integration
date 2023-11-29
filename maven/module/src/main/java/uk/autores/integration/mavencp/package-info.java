@@ -1,8 +1,7 @@
 @ResourceFiles(
         value = "Foo.txt",
         handler = GenerateStringsFromText.class,
-        config = @ResourceFiles.Cfg(key = VISIBILITY, value = Visibility.PUBLIC),
-        location = StandardLocation.CLASS_PATH
+        config = @ResourceFiles.Cfg(key = VISIBILITY, value = Visibility.PUBLIC)
 )
 package uk.autores.integration.mavencp;
 
