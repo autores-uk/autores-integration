@@ -10,7 +10,7 @@ repositories {
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
 }
 
-var libver = "8.0.9-alpha"
+var libver = "8.0.21-beta"
 if (System.getProperty("AUTORESVER") != null) {
     libver = System.getProperty("AUTORESVER")
 }
@@ -21,7 +21,7 @@ dependencies {
     compileOnly(autores)
     annotationProcessor(autores)
     testImplementation(autores)
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
 }

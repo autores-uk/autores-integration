@@ -1,21 +1,18 @@
 package uk.autores.integration.mavencp.test.generated;
 
 import org.junit.jupiter.api.Test;
-import uk.autores.GenerateByteArraysFromFiles;
-import uk.autores.GenerateStringsFromText;
-import uk.autores.ResourceFiles;
-import uk.autores.cfg.Strategy;
+import uk.autores.ByteArrayResources;
+import uk.autores.Strategy;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static uk.autores.cfg.Strategy.STRATEGY;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-@ResourceFiles(
+@ByteArrayResources(
         value = {
                 "BinaryInlineSingleByte65534.txt",
                 "BinaryInlineSingleByte65535.txt",
@@ -23,10 +20,9 @@ import static uk.autores.cfg.Strategy.STRATEGY;
                 "BinaryInlineAll16BitSequences.bin",
                 "BinaryInlineMegabytes.bin",
         },
-        handler = GenerateByteArraysFromFiles.class,
-        config = @ResourceFiles.Cfg(key = STRATEGY, value = Strategy.INLINE)
+        strategy = Strategy.INLINE
 )
-@ResourceFiles(
+@ByteArrayResources(
         value = {
                 "BinaryEncodedSingleByte65534.txt",
                 "BinaryEncodedSingleByte65535.txt",
@@ -34,15 +30,13 @@ import static uk.autores.cfg.Strategy.STRATEGY;
                 "BinaryEncodedAll16BitSequences.bin",
                 "BinaryEncodedMegabytes.bin",
         },
-        handler = GenerateByteArraysFromFiles.class,
-        config = @ResourceFiles.Cfg(key = STRATEGY, value = Strategy.ENCODE)
+        strategy = Strategy.CONST
 )
-@ResourceFiles(
+@ByteArrayResources(
         value = {
                 "BinaryLazyMegabytes.bin",
         },
-        handler = GenerateByteArraysFromFiles.class,
-        config = @ResourceFiles.Cfg(key = STRATEGY, value = Strategy.LAZY)
+        strategy = Strategy.LAZY
 )
 class ByteArrayTest {
 
