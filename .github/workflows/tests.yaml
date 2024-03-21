@@ -72,7 +72,7 @@ jobs:
             AUTORESVER=${{ env.AUTORESVER8 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Maven Java 17 GraalVM native application
+      - name: Maven Java 21 GraalVM native application
         uses: docker/build-push-action@v5
         with:
           push: false
