@@ -1,7 +1,7 @@
 package uk.autores.integration.mavencp.test.generated;
 
 import org.junit.jupiter.api.Test;
-import uk.autores.ByteArrayResources;
+import uk.autores.ByteArrays;
 import uk.autores.Strategy;
 
 import java.io.BufferedInputStream;
@@ -11,8 +11,7 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-@ByteArrayResources(
+@ByteArrays(
         value = {
                 "BinaryInlineSingleByte65534.txt",
                 "BinaryInlineSingleByte65535.txt",
@@ -22,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         },
         strategy = Strategy.INLINE
 )
-@ByteArrayResources(
+@ByteArrays(
         value = {
                 "BinaryEncodedSingleByte65534.txt",
                 "BinaryEncodedSingleByte65535.txt",
@@ -32,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         },
         strategy = Strategy.CONST
 )
-@ByteArrayResources(
+@ByteArrays(
         value = {
                 "BinaryLazyMegabytes.bin",
         },

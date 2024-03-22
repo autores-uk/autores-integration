@@ -2,14 +2,14 @@ package uk.autores.integration.mavencp.test.generated;
 
 import org.junit.jupiter.api.Test;
 import uk.autores.Strategy;
-import uk.autores.StringResources;
+import uk.autores.Texts;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@StringResources(
+@Texts(
         value = {
                 "InlineSingleByte65534.txt",
                 "InlineSingleByte65535.txt",

@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  AUTORESVER8: 8.0.21-beta
-  AUTORESVER11: 11.0.21-beta
+  AUTORESVER8: 8.0.22-beta
+  AUTORESVER11: 11.0.22-beta
 
 jobs:
   maven:

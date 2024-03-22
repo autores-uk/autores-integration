@@ -1,13 +1,10 @@
 package uk.autores.integration.nativeapp;
 
-import uk.autores.ByteArrayResources;
-import uk.autores.MessageResources;
-import uk.autores.Strategy;
-import uk.autores.StringResources;
+import uk.autores.*;
 
-@ByteArrayResources(value = "InlineBytes.txt", strategy = Strategy.INLINE)
-@StringResources(value = "InlineString.txt", strategy = Strategy.INLINE)
-@MessageResources("InlineMessage.properties")
+@ByteArrays(value = "InlineBytes.txt", strategy = Strategy.INLINE)
+@Texts(value = "InlineString.txt", strategy = Strategy.INLINE)
+@Messages("InlineMessage.properties")
 public class Main {
     public static void main(String[] args) {
         System.out.writeBytes(InlineBytes.bytes());
