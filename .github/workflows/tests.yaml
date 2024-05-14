@@ -61,6 +61,17 @@ jobs:
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Maven Java 22
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          tags: maven-jdk22:latest
+          context: maven/
+          file: maven/Dockerfile.jdk22
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Maven Java 11 with Java 8 lib
         uses: docker/build-push-action@v5
         with:
