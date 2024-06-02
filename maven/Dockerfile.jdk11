@@ -2,4 +2,4 @@ FROM docker.io/library/maven:3-eclipse-temurin-11
 ADD . /code
 WORKDIR /code
 ARG AUTORESVER
-RUN mvn clean test --batch-mode -Dmaven.compiler.target=11 -DAUTORESVER=$AUTORESVER
+RUN mvn -V clean test --batch-mode -Dmaven.compiler.target=11 -DAUTORESVER=$AUTORESVER

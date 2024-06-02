@@ -6,5 +6,5 @@ ENV PATH=$PATH:/usr/share/maven/bin
 ADD . /code
 WORKDIR /code
 ARG AUTORESVER
-RUN mvn clean package -P native --batch-mode -Dmaven.compiler.target=21 -DAUTORESVER=$AUTORESVER
+RUN mvn -V clean package -P native --batch-mode -Dmaven.compiler.target=21 -DAUTORESVER=$AUTORESVER
 RUN target/native-app
