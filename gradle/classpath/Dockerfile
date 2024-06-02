@@ -1,4 +1,4 @@
-FROM docker.io/library/gradle:8.7.0-jdk8
+FROM docker.io/library/gradle:8-jdk8
 ADD . /code
 WORKDIR /code
 ARG AUTORESVER
