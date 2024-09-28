@@ -18,6 +18,17 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Check out code
         uses: actions/checkout@v4
+      - name: Maven Java 23
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          tags: maven-jdk23:latest
+          context: maven/
+          file: maven/Dockerfile.jdk23
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Maven Java 8 Classpath
         uses: docker/build-push-action@v6
         with:
@@ -57,17 +68,6 @@ jobs:
           tags: maven-jdk21:latest
           context: maven/
           file: maven/Dockerfile.jdk21
-          build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-      - name: Maven Java 23
-        uses: docker/build-push-action@v6
-        with:
-          push: false
-          tags: maven-jdk23:latest
-          context: maven/
-          file: maven/Dockerfile.jdk23
           build-args: |
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
