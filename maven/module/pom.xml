@@ -8,6 +8,12 @@
     <artifactId>maven-module</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <parent>
+        <groupId>uk.autores.integrate</groupId>
+        <artifactId>maven</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <packaging>jar</packaging>
 
     <properties>
@@ -37,7 +43,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>${maven-compiler-plugin}</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -51,7 +57,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>${maven-surefire-plugin}</version>
             </plugin>
         </plugins>
     </build>

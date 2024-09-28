@@ -10,6 +10,11 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <maven-compiler-plugin>3.13.0</maven-compiler-plugin>
+        <maven-surefire-plugin>3.5.0</maven-surefire-plugin>
+    </properties>
+
     <modules>
         <module>classpath</module>
         <module>module</module>
