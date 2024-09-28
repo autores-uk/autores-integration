@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  AUTORESVER8: 8.0.33-beta
-  AUTORESVER11: 11.0.33-beta
+  AUTORESVER8: 8.0.34-beta
+  AUTORESVER11: 11.0.34-beta
 
 jobs:
   maven:
@@ -19,7 +19,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Maven Java 8 Classpath
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: maven-jdk8-cp:latest
@@ -29,7 +29,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 11
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: maven-jdk11:latest
@@ -40,7 +40,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 17
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: maven-jdk17:latest
@@ -51,7 +51,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 21
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: maven-jdk21:latest
@@ -61,19 +61,19 @@ jobs:
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Maven Java 22
-        uses: docker/build-push-action@v5
+      - name: Maven Java 23
+        uses: docker/build-push-action@v6
         with:
           push: false
-          tags: maven-jdk22:latest
+          tags: maven-jdk23:latest
           context: maven/
-          file: maven/Dockerfile.jdk22
+          file: maven/Dockerfile.jdk23
           build-args: |
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 11 with Java 8 lib
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: maven-jdk11:latest
@@ -84,7 +84,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 21 GraalVM native application
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: graal:latest
@@ -103,7 +103,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Gradle Java 8 Classpath
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: gradle-jdk8-cp:latest
@@ -113,7 +113,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Gradle Java 11 Module
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: false
           tags: gradle-jdk11-module:latest
