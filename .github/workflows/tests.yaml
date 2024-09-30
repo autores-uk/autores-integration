@@ -136,6 +136,7 @@ jobs:
         with:
           push: false
           tags: shellcheck:latest
+          context: scripts
           file: scripts/Dockerfile
           cache-from: type=gha
           cache-to: type=gha,mode=max
