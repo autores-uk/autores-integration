@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Texts(
+        name = "InlineText",
         value = {
                 "InlineSingleByte65534.txt",
                 "InlineSingleByte65535.txt",
@@ -22,10 +23,10 @@ class StringsTest {
 
     @Test
     void isExpectedLengthAndContent() throws IOException {
-        verify("InlineSingleByte65534.txt", InlineSingleByte65534.text());
-        verify("InlineSingleByte65535.txt", InlineSingleByte65535.text());
-        verify("InlineSingleByte65536.txt", InlineSingleByte65536.text());
-        verify("InlineAllCodePoints.txt", InlineAllCodePoints.text());
+        verify("InlineSingleByte65534.txt", InlineText.inlineSingleByte65534());
+        verify("InlineSingleByte65535.txt", InlineText.inlineSingleByte65535());
+        verify("InlineSingleByte65536.txt", InlineText.inlineSingleByte65536());
+        verify("InlineAllCodePoints.txt", InlineText.inlineAllCodePoints());
     }
 
     private void verify(String resource, String s) throws IOException {

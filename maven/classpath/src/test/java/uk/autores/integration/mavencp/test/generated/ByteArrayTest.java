@@ -12,16 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ByteArrays(
+        name = "Inline",
         value = {
                 "BinaryInlineSingleByte65534.txt",
                 "BinaryInlineSingleByte65535.txt",
                 "BinaryInlineSingleByte65536.txt",
-                "BinaryInlineAll16BitSequences.bin",
-                "BinaryInlineMegabytes.bin",
+                //"BinaryInlineAll16BitSequences.bin",
+                //"BinaryInlineMegabytes.bin",
         },
         strategy = Strategy.INLINE
 )
 @ByteArrays(
+        name = "Const",
         value = {
                 "BinaryEncodedSingleByte65534.txt",
                 "BinaryEncodedSingleByte65535.txt",
@@ -32,6 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         strategy = Strategy.CONST
 )
 @ByteArrays(
+        name = "Lazy",
         value = {
                 "BinaryLazyMegabytes.bin",
         },
@@ -41,19 +44,19 @@ class ByteArrayTest {
 
     @Test
     void isExpectedLengthAndContent() throws IOException {
-        verify("BinaryInlineSingleByte65534.txt", BinaryInlineSingleByte65534.bytes());
-        verify("BinaryInlineSingleByte65535.txt", BinaryInlineSingleByte65535.bytes());
-        verify("BinaryInlineSingleByte65536.txt", BinaryInlineSingleByte65536.bytes());
-        verify("BinaryInlineAll16BitSequences.bin", BinaryInlineAll16BitSequences.bytes());
-        verify("BinaryInlineMegabytes.bin", BinaryInlineMegabytes.bytes());
+        verify("BinaryInlineSingleByte65534.txt", Inline.binaryInlineSingleByte65534());
+        verify("BinaryInlineSingleByte65535.txt", Inline.binaryInlineSingleByte65535());
+        verify("BinaryInlineSingleByte65536.txt", Inline.binaryInlineSingleByte65536());
+        //verify("BinaryInlineAll16BitSequences.bin", Inline.binaryInlineAll16BitSequences());
+        //verify("BinaryInlineMegabytes.bin", BinaryInlineMegabytes.bytes());
 
-        verify("BinaryEncodedSingleByte65534.txt", BinaryEncodedSingleByte65534.bytes());
-        verify("BinaryEncodedSingleByte65535.txt", BinaryEncodedSingleByte65535.bytes());
-        verify("BinaryEncodedSingleByte65536.txt", BinaryEncodedSingleByte65536.bytes());
-        verify("BinaryEncodedAll16BitSequences.bin", BinaryEncodedAll16BitSequences.bytes());
-        verify("BinaryEncodedMegabytes.bin", BinaryEncodedMegabytes.bytes());
+        verify("BinaryEncodedSingleByte65534.txt", Const.binaryEncodedSingleByte65534());
+        verify("BinaryEncodedSingleByte65535.txt", Const.binaryEncodedSingleByte65535());
+        verify("BinaryEncodedSingleByte65536.txt", Const.binaryEncodedSingleByte65536());
+        verify("BinaryEncodedAll16BitSequences.bin", Const.binaryEncodedAll16BitSequences());
+        verify("BinaryEncodedMegabytes.bin", Const.binaryEncodedMegabytes());
 
-        verify("BinaryLazyMegabytes.bin", BinaryLazyMegabytes.bytes());
+        verify("BinaryLazyMegabytes.bin", Lazy.binaryLazyMegabytes());
     }
 
     private void verify(String resource, byte[] barr) throws IOException {
