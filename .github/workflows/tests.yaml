@@ -83,16 +83,6 @@ jobs:
             AUTORESVER=${{ env.AUTORESVER8 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Maven Java 21 GraalVM native application
-        uses: docker/build-push-action@v6
-        with:
-          push: false
-          tags: graal:latest
-          context: maven/native/
-          build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
   gradle:
     runs-on: ubuntu-latest
     steps:
@@ -118,6 +108,25 @@ jobs:
           push: false
           tags: gradle-jdk11-module:latest
           context: gradle/module/
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Maven Java 23 GraalVM native application
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          tags: graal:latest
+          context: maven/native/
           build-args: |
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
