@@ -10,7 +10,7 @@ repositories {
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
 }
 
-var libver = "8.0.36-beta"
+var libver = "8.0.37-beta"
 if (System.getProperty("AUTORESVER") != null) {
     libver = System.getProperty("AUTORESVER")
 }
