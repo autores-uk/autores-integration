@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  AUTORESVER8: 8.0.37-beta
-  AUTORESVER11: 11.0.37-beta
+  AUTORESVER8: 8.0.38-beta
+  AUTORESVER11: 11.0.38-beta
 
 jobs:
   maven:
@@ -81,6 +81,26 @@ jobs:
           file: maven/Dockerfile.jdk11
           build-args: |
             AUTORESVER=${{ env.AUTORESVER8 }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  lists:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Maven Java 23
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          tags: maven-jdk23:latest
+          context: maven/
+          file: maven/lists/Dockerfile
+          build-args: |
+            AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   gradle:
