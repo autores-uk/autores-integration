@@ -22,9 +22,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: false
-          tags: maven-jdk23:latest
+          tags: maven-jdk24:latest
           context: maven/
-          file: maven/Dockerfile.jdk23
+          file: maven/Dockerfile.jdk24
           build-args: |
             AUTORESVER=${{ env.AUTORESVER11 }}
           cache-from: type=gha
