@@ -5,23 +5,27 @@
 
 version: 2
 updates:
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/maven/classpath" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/maven/classpath"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/maven/module" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/maven/module"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "maven" # See documentation for possible values
-    directory: "/maven/native" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/maven/native"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "gradle" # See documentation for possible values
-    directory: "/gradle/classpath" # Location of package manifests
+  - package-ecosystem: "maven"
+    directory: "/maven/lists"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "gradle" # See documentation for possible values
-    directory: "/gradle/module" # Location of package manifests
+  - package-ecosystem: "gradle"
+    directory: "/gradle/classpath"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "gradle"
+    directory: "/gradle/module"
     schedule:
       interval: "weekly"
