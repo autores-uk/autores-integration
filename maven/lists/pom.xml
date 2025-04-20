@@ -16,7 +16,7 @@
         <AUTORESVER>11.0.41-beta</AUTORESVER>
 
         <junit.version>5.12.1</junit.version>
-        <maven-compiler-plugin>3.13.0</maven-compiler-plugin>
+        <maven-compiler-plugin>3.14.0</maven-compiler-plugin>
         <maven-surefire-plugin>3.5.3</maven-surefire-plugin>
     </properties>
 
