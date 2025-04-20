@@ -22,13 +22,19 @@
         <imageName>native-app</imageName>
         <mainClass>uk.autores.integration.nativeapp.Main</mainClass>
 
-        <AUTORESVER>11.0.37-beta</AUTORESVER>
+        <AUTORESVER>11.0.41-beta</AUTORESVER>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>uk.autores</groupId>
             <artifactId>annotations</artifactId>
+            <version>${AUTORESVER}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.autores</groupId>
+            <artifactId>processing</artifactId>
             <version>${AUTORESVER}</version>
             <scope>provided</scope>
         </dependency>

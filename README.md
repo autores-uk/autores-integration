@@ -10,5 +10,5 @@ This project smoke tests that assets were published correctly and can be consume
 Example:
 
 ```shell
-podman build --build-arg AUTORESVER=11.0.38-beta -t delme ./maven/native/
+podman build --build-arg AUTORESVER=11.0.41-beta -t delme ./maven/native/
 ```
