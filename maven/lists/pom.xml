@@ -13,7 +13,7 @@
         <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <AUTORESVER>11.0.42-beta</AUTORESVER>
+        <AUTORESVER>11.0.44-beta</AUTORESVER>
 
         <junit.version>5.12.1</junit.version>
         <maven-compiler-plugin>3.14.0</maven-compiler-plugin>
