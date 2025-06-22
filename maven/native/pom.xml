@@ -22,7 +22,7 @@
         <imageName>native-app</imageName>
         <mainClass>uk.autores.integration.nativeapp.Main</mainClass>
 
-        <AUTORESVER>11.0.42-beta</AUTORESVER>
+        <AUTORESVER>11.1.2</AUTORESVER>
     </properties>
 
     <dependencies>
