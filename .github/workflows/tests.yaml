@@ -5,8 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  AUTORESVER8: 8.1.2
-  AUTORESVER11: 11.1.2
+  AUTORESVER17: 17.1.2
 
 jobs:
   maven:
@@ -26,28 +25,17 @@ jobs:
           context: maven/
           file: maven/Dockerfile.jdk24
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Maven Java 8 Classpath
+      - name: Maven Java 17 Classpath
         uses: docker/build-push-action@v6
         with:
           push: false
-          tags: maven-jdk8-cp:latest
+          tags: maven-jdk17-cp:latest
           context: maven/classpath/
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER8 }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-      - name: Maven Java 11
-        uses: docker/build-push-action@v6
-        with:
-          push: false
-          tags: maven-jdk11:latest
-          context: maven/
-          file: maven/Dockerfile.jdk11
-          build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 17
@@ -58,7 +46,7 @@ jobs:
           context: maven/
           file: maven/Dockerfile.jdk17
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Maven Java 21
@@ -69,18 +57,7 @@ jobs:
           context: maven/
           file: maven/Dockerfile.jdk21
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-      - name: Maven Java 11 with Java 8 lib
-        uses: docker/build-push-action@v6
-        with:
-          push: false
-          tags: maven-jdk11:latest
-          context: maven/
-          file: maven/Dockerfile.jdk11
-          build-args: |
-            AUTORESVER=${{ env.AUTORESVER8 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   lists:
@@ -100,7 +77,7 @@ jobs:
           context: maven/
           file: maven/lists/Dockerfile
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   gradle:
@@ -112,24 +89,24 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Check out code
         uses: actions/checkout@v4
-      - name: Gradle Java 8 Classpath
+      - name: Gradle Java 817 Classpath
         uses: docker/build-push-action@v6
         with:
           push: false
-          tags: gradle-jdk8-cp:latest
+          tags: gradle-jdk17-cp:latest
           context: gradle/classpath/
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER8 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Gradle Java 11 Module
+      - name: Gradle Java 17 Module
         uses: docker/build-push-action@v6
         with:
           push: false
-          tags: gradle-jdk11-module:latest
+          tags: gradle-jdk17-module:latest
           context: gradle/module/
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   native:
@@ -148,7 +125,7 @@ jobs:
           tags: graal:latest
           context: maven/native/
           build-args: |
-            AUTORESVER=${{ env.AUTORESVER11 }}
+            AUTORESVER=${{ env.AUTORESVER17 }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   shellcheck:
