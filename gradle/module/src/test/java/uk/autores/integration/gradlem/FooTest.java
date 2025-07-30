@@ -1,4 +1,4 @@
-package uk.autores.integration.gradlem.test;
+package uk.autores.integration.gradlem;
 
 import org.junit.jupiter.api.Test;
 import uk.autores.integration.gradlem.Gradlem;
