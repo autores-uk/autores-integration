@@ -11,10 +11,10 @@
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <AUTORESVER>8.1.2</AUTORESVER>
+        <AUTORESVER>17.1.1</AUTORESVER>
 
         <maven-compiler-plugin>3.14.0</maven-compiler-plugin>
         <maven-surefire-plugin>3.5.3</maven-surefire-plugin>
