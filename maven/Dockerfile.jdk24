@@ -1,5 +1,0 @@
-FROM docker.io/library/maven:3-eclipse-temurin-24
-ADD . /code
-WORKDIR /code
-ARG AUTORESVER
-RUN mvn -V clean test --batch-mode -Dmaven.compiler.source=24 -Dmaven.compiler.target=24 -DAUTORESVER=$AUTORESVER
