@@ -16,7 +16,7 @@
         <junit.platform.native.version>0.9.28</junit.platform.native.version>
         <maven.shade.plugin.version>3.6.1</maven.shade.plugin.version>
         <maven.surefire.plugin.version>3.5.4</maven.surefire.plugin.version>
-        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
         <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
         <exec.maven.plugin.version>3.5.1</exec.maven.plugin.version>
         <imageName>native-app</imageName>
