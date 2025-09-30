@@ -118,7 +118,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Check out code
         uses: actions/checkout@v4
-      - name: Maven Java 24 GraalVM native application
+      - name: Maven Java 25 GraalVM native application
         uses: docker/build-push-action@v6
         with:
           push: false
