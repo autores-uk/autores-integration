@@ -1,0 +1,5 @@
+FROM docker.io/library/maven:3-sapmachine-26
+ADD . /code
+WORKDIR /code
+ARG AUTORESVER
+RUN mvn -V clean test --batch-mode -Dmaven.compiler.source=26 -Dmaven.compiler.target=26 -DAUTORESVER=$AUTORESVER
