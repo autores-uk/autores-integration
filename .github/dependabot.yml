@@ -6,38 +6,20 @@
 version: 2
 updates:
   - package-ecosystem: "maven"
-    directory: "/maven/classpath"
+    directories:
+      - "/maven/classpath"
+      - "/maven/module"
+      - "/maven/native"
+      - "/maven/lists"
     schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 5
-  - package-ecosystem: "maven"
-    directory: "/maven/module"
-    schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 5
-  - package-ecosystem: "maven"
-    directory: "/maven/native"
-    schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 5
-  - package-ecosystem: "maven"
-    directory: "/maven/lists"
-    schedule:
-      interval: "weekly"
+      interval: "monthly"
     cooldown:
       default-days: 5
   - package-ecosystem: "gradle"
-    directory: "/gradle/classpath"
+    directories:
+      - "/gradle/classpath"
+      - "/gradle/module"
     schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 5
-  - package-ecosystem: "gradle"
-    directory: "/gradle/module"
-    schedule:
-      interval: "weekly"
+      interval: "monthly"
     cooldown:
       default-days: 5
